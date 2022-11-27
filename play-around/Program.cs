@@ -1,21 +1,17 @@
-﻿delegate void MeDelegate();
-
-class MainClass
+﻿class MainClass
 {
     static void Main()
     {
-        MeDelegate d = Foo;
-        d += Goo;
-        d += Sue;
-        d -= Foo;
-        d += Foo;
-        foreach(MeDelegate m in d.GetInvocationList())
-        {
-            Console.WriteLine(m.Target + ": " + m.Method);
-        }
-        d();
+        TrainSignal trainSignal = new TrainSignal();
+        new Car(trainSignal);
+        new Car(trainSignal);
+        new Car(trainSignal);
+        new Car(trainSignal);
+        trainSignal.TrainsAComing();
+        trainSignal.TrainsAComing();
+        trainSignal.TrainsAComing();
+        trainSignal.TrainsAComing();
+        trainSignal.TrainsAComing = null;
+        trainSignal.HereComesATrain();
     }
-    static void Foo() { Console.WriteLine("Foo()"); }
-    static void Goo() { Console.WriteLine("Goo()"); }
-    static void Sue() { Console.WriteLine("Sue()"); }
 }
