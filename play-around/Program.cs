@@ -2,16 +2,9 @@
 {
     static void Main()
     {
-        TrainSignal trainSignal = new TrainSignal();
-        new Car(trainSignal);
-        new Car(trainSignal);
-        new Car(trainSignal);
-        new Car(trainSignal);
-        trainSignal.TrainsAComing();
-        trainSignal.TrainsAComing();
-        trainSignal.TrainsAComing();
-        trainSignal.TrainsAComing();
-        trainSignal.TrainsAComing = null;
-        trainSignal.HereComesATrain();
+        Cow cow = new Cow();
+        cow.mooing += 
+            () => Console.WriteLine("Handler");
+        cow.PushSleepingCow();
     }
 }

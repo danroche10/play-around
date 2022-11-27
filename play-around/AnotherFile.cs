@@ -1,24 +1,13 @@
 ﻿using System;
 
-class TrainSignal
+class Cow
 {
-    public event Action TrainsAComing;
-    public void HereComesATrain()
-    {
-        // there is a ron of logic here
-        if (TrainsAComing != null)
-            TrainsAComing();
-    }
-}
+    public event Action mooing;
 
-class Car
-{
-    public Car(TrainSignal trainSignal)
+    public void PushSleepingCow()
     {
-        trainSignal.TrainsAComing += StopTheCar;
-    }
-    void StopTheCar()
-    {
-        Console.WriteLine("Screeeetch");
+        // .....
+        if (mooing != null)
+            mooing();
     }
 }
