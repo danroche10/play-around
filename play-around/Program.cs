@@ -1,34 +1,18 @@
-﻿public class MainClass
+﻿delegate bool MeDelegate(int n);
+
+class MainClass
 {
-    static int count = 0;
-    static object baton = new object();
-    static Dictionary<int, int> map = new Dictionary<int, int> {
-        {0, 0}
-    };
     static void Main()
     {
-        var thread1 = new Thread(IncremenetCount);
-        var thread2 = new Thread(IncremenetCount);
-        thread1.Start();
-        Thread.Sleep(500);
-        thread2.Start();
+        int[] numbers = { 2, 7, 3, 9, 5, 7, 1, 8, 64, 1000 };
+        IEnumerable<int> result = RunNumbersThroughGauntlet(numbers, n => n < 5);
+        foreach(int n in result)
+            Console.WriteLine(n);
     }
-
-    static void IncremenetCount()
+    static IEnumerable<int> RunNumbersThroughGauntlet(IEnumerable<int> numbers, MeDelegate gauntlet)
     {
-        while(true)
-        {
-            lock (baton)
-            {
-                int temp = map[0];
-                Thread.Sleep(1000);
-                map[0] = temp + 1;
-                count++;
-                Console.WriteLine("Thread ID" + Thread.CurrentThread.ManagedThreadId +
-                    " incremented count to " + map[0]);
-                Thread.Sleep(1000);
-            }
-        }
+        foreach(int number in numbers)
+            if (gauntlet(number))
+                yield return number;
     }
-    
 }
