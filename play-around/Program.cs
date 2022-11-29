@@ -2,18 +2,31 @@
 {
     static void Main()
     {
-        float a = (float)(1.0 / 81);
-        float b = 0;
-        for (int i = 0; i < 729; ++i)
-            b += a;
-        Console.WriteLine(b);
+        // Polymorphism at work #1: a Rectangle, Triangle and Circle
+        // can all be used whereever a Shape is expected. No cast is
+        // required because an implicit conversion exists from a derived
+        // class to its base class.
+        var shapes = new List<Shape>
+{
+    new Rectangle(),
+    new Triangle(),
+    new Circle()
+};
 
-
-        double c = 1.0 / 81;
-        double d = 0;
-        for (int i = 0; i < 729; ++i)
-            d += c;
-        Console.WriteLine(d);
+        // Polymorphism at work #2: the virtual method Draw is
+        // invoked on each of the derived classes, not the base class.
+        foreach (var shape in shapes)
+        {
+            shape.Draw();
+        }
+        /* Output:
+            Drawing a rectangle
+            Performing base class drawing tasks
+            Drawing a triangle
+            Performing base class drawing tasks
+            Drawing a circle
+            Performing base class drawing tasks
+        */
     }
 
 
