@@ -1,30 +1,19 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
+﻿using System.Collections;
 
 class Example
 {
-    static void Main()
+    // Use the PrintIntAsString method with the two methods defined above
+    public static void Main()
     {
-        Test test = new Test();
-        test.GetDataAsync();
-    }
-    class Test
-    {
-        public async Task<string> GetDataAsync()
-        {
-            // Use the await keyword to wait for the task to complete.
-            string data = await SomeAsyncMethod();
+        // Create a non-generic collection of ints
+        ArrayList collection = new ArrayList();
 
-            // Now that the task is complete, you can use the data that was returned.
-            return data;
-        }
+        // Add a value to the collection
+        int value = 42;
+        collection.Add(value);
 
-        public async Task<string> SomeAsyncMethod()
-        {
-            Thread.Sleep(20000);
-            return "test";
-        }
+        // Retrieve the value from the collection
+        int unboxedValue = collection[0];
     }
 
 
