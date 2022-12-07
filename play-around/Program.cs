@@ -5,15 +5,12 @@ class Example
     // Use the PrintIntAsString method with the two methods defined above
     public static void Main()
     {
-        // Create a non-generic collection of ints
-        ArrayList collection = new ArrayList();
+        string str1 = "Hello ";
+        string str2 = str1;
+        str1 += "World";
 
-        // Add a value to the collection
-        int value = 42;
-        collection.Add(value);
+        System.Console.WriteLine(str2);
 
-        // Retrieve the value from the collection
-        int unboxedValue = collection[0];
     }
 
 
