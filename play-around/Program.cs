@@ -1,33 +1,33 @@
-﻿class MainClass
+﻿using System;
+using System.Threading;
+using System.Threading.Tasks;
+
+class Example
 {
     static void Main()
     {
-        // Polymorphism at work #1: a Rectangle, Triangle and Circle
-        // can all be used whereever a Shape is expected. No cast is
-        // required because an implicit conversion exists from a derived
-        // class to its base class.
-        var shapes = new List<Shape>
-{
-    new Rectangle(),
-    new Triangle(),
-    new Circle()
-};
-
-        // Polymorphism at work #2: the virtual method Draw is
-        // invoked on each of the derived classes, not the base class.
-        foreach (var shape in shapes)
-        {
-            shape.Draw();
-        }
-        /* Output:
-            Drawing a rectangle
-            Performing base class drawing tasks
-            Drawing a triangle
-            Performing base class drawing tasks
-            Drawing a circle
-            Performing base class drawing tasks
-        */
+        Test test = new Test();
+        test.GetDataAsync();
     }
+    class Test
+    {
+        public async Task<string> GetDataAsync()
+        {
+            // Use the await keyword to wait for the task to complete.
+            string data = await SomeAsyncMethod();
+
+            // Now that the task is complete, you can use the data that was returned.
+            return data;
+        }
+
+        public async Task<string> SomeAsyncMethod()
+        {
+            Thread.Sleep(20000);
+            return "test";
+        }
+    }
+
+
 
 
 }
