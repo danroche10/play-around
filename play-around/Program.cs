@@ -1,19 +1,31 @@
-﻿using System.Collections;
-
-class Example
+﻿namespace SOLID_PRINCIPLES.LSP
 {
-    // Use the PrintIntAsString method with the two methods defined above
-    public static void Main()
+    class Program
     {
-        string str1 = "Hello ";
-        string str2 = str1;
-        str1 += "World";
-
-        System.Console.WriteLine(str2);
-
+        static void Main(string[] args)
+        {
+            Fruit fruit = new Orange();
+            Console.WriteLine(fruit.GetColor());
+            fruit = new Apple();
+            Console.WriteLine(fruit.GetColor());
+        }
     }
-
-
-
-
+    public abstract class Fruit
+    {
+        public abstract string GetColor();
+    }
+    public class Apple : Fruit
+    {
+        public override string GetColor()
+        {
+            return "Red";
+        }
+    }
+    public class Orange : Fruit
+    {
+        public override string GetColor()
+        {
+            return "Orange";
+        }
+    }
 }
