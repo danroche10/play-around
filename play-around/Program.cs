@@ -1,13 +1,26 @@
 ﻿using System.Collections.Immutable;
+using System.Diagnostics;
 
 class Program
 {
     static void Main()
     {
-        for(int i = 308; i < 310; i++)
+        void IncreaseValue(ref int x)
         {
-            double test = Math.Pow(10, i);
-            Console.WriteLine(test);
+            double useUpStack = Math.Pow(100, 10000000000000);
+            x++;
+            
+            StackTrace stackTrace = new StackTrace();
+            int stackFrames = stackTrace.FrameCount;
+            if (x % 1000 == 0)
+            {
+                Console.WriteLine(x);
+                Console.WriteLine("Stack frames: {0} used", stackFrames);
+            }
+            IncreaseValue(ref x);
         }
+
+        int myInt = 5;
+        IncreaseValue(ref myInt);
     }
 }
