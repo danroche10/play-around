@@ -5,22 +5,21 @@ class Program
 {
     static void Main()
     {
-        void IncreaseValue(ref int x)
-        {
-            double useUpStack = Math.Pow(100, 10000000000000);
-            x++;
-            
-            StackTrace stackTrace = new StackTrace();
-            int stackFrames = stackTrace.FrameCount;
-            if (x % 1000 == 0)
-            {
-                Console.WriteLine(x);
-                Console.WriteLine("Stack frames: {0} used", stackFrames);
-            }
-            IncreaseValue(ref x);
-        }
+        Program program = new Program();
+        int refNumber = 10;
+        int valueNumber = 10;
+        program.refTest(ref refNumber);
+        program.valueTest(valueNumber);
+        Console.WriteLine("refNumber = {0}", refNumber);
+        Console.WriteLine("valueNumber = {0}", valueNumber);
+    }
 
-        int myInt = 5;
-        IncreaseValue(ref myInt);
+   private void refTest(ref int number)
+    {
+        number++;
+    }
+    private void valueTest(int number)
+    {
+        number++;
     }
 }
