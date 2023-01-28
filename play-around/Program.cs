@@ -1,17 +1,30 @@
-﻿namespace SOLID_PRINCIPLES.LSP
+﻿class Program
 {
-    class Program
+    static void Main()
     {
-        static void Main(string[] args)
-        {
-            Program program = new Program();
-            program.foo();
-        }
+        DerivedClass derivedClass = new DerivedClass();
+        derivedClass.MyMethod();
 
-        public int foo()
+    }
+    abstract class VeryBaseClass
+    {
+        public abstract int MyMethod();
+    }
+    class BaseClass : VeryBaseClass
+    {
+        public override int MyMethod()
         {
-            return foo();
+            Console.WriteLine("test");
+            return 5;
         }
+    }
 
+    class DerivedClass : BaseClass
+    {
+        public override int MyMethod()
+        {
+            Console.WriteLine("MyMethod in DerivedClass");
+            return 5;
+        }
     }
 }
