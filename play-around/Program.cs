@@ -1,30 +1,13 @@
-﻿class Program
+﻿using System.Collections.Immutable;
+
+class Program
 {
     static void Main()
     {
-        DerivedClass derivedClass = new DerivedClass();
-        derivedClass.MyMethod();
-
-    }
-    abstract class VeryBaseClass
-    {
-        public abstract int MyMethod();
-    }
-    class BaseClass : VeryBaseClass
-    {
-        public override int MyMethod()
+        for(int i = 308; i < 310; i++)
         {
-            Console.WriteLine("test");
-            return 5;
-        }
-    }
-
-    class DerivedClass : BaseClass
-    {
-        public override int MyMethod()
-        {
-            Console.WriteLine("MyMethod in DerivedClass");
-            return 5;
+            double test = Math.Pow(10, i);
+            Console.WriteLine(test);
         }
     }
 }
