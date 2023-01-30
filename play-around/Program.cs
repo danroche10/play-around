@@ -5,21 +5,22 @@ class Program
 {
     static void Main()
     {
-        Program program = new Program();
-        int refNumber = 10;
-        int valueNumber = 10;
-        program.refTest(ref refNumber);
-        program.valueTest(valueNumber);
-        Console.WriteLine("refNumber = {0}", refNumber);
-        Console.WriteLine("valueNumber = {0}", valueNumber);
+        int[] testArray = new int[1000000];
+        List<int> testList = new List<int>();
+        for (int i = 0; i < 1000000; i++)
+        {
+            //testArray[i] = i;
+            testList.Add(i);  
+        }
+        DateTimeOffset timeBeforeArrayIteration = (DateTimeOffset)DateTime.UtcNow;
+        foreach (int i in testList)
+        {
+            Console.WriteLine(i);
+        }
+        DateTimeOffset timeAfterArrayIteration = (DateTimeOffset)DateTime.UtcNow;
+        Console.WriteLine(timeBeforeArrayIteration.ToString());
+        Console.WriteLine(timeAfterArrayIteration.ToString());
+        // 28 seconds for array
     }
 
-   private void refTest(ref int number)
-    {
-        number++;
-    }
-    private void valueTest(int number)
-    {
-        number++;
-    }
 }
